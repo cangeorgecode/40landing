@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="hero px-4 py-24 mx-auto max-w-7xl min-h-screen bg-gradient-to-br from-base-200 to-base-300">
+  <div class="hero-content w-full">
+    <div class="card w-full max-w-lg bg-base-100 border border-base-300 shadow-lg">
+      <div class="card-body flex flex-col items-center pb-10 pt-10">
+        <img 
+          src="{{ user.profile.avatar.url|default:'/static/default_avatar.webp' }}" 
+          class="avatar w-16 h-16 rounded-full mb-4" 
+          alt="Profile Avatar"
+        >
+        <div id="profile-display" class="px-4 text-center">
+          <h5 class="card-title text-xl font-medium">{{ user.username }}</h5>
+          <span class="text-sm text-base-content/60">{{ user.email }}</span>
+          <span class="text-sm text-base-content/60 block mt-2">Joined: {{ user.date_joined|date:"M d, Y" }}</span>
+          {% if user_payment %}
+            <span class="text-sm text-base-content/60 block mt-2">Your purchase: {{ user_payment.product_name }}</span>
+          {% else %}
+            <span class="text-sm text-base-content/60 block mt-2">You haven’t made a purchase yet—help a brother out!</span>
+          {% endif %}
+        </div>
+        <div id="profile-edit-form"></div>
+        <div class="flex mt-6 space-x-4">
+          <a 
+            href="{% url 'account_email' %}" 
+            class="btn btn-outline btn-primary btn-sm"
+          >
+            Change Email
+          </a>
+          <a 
+            href="{% url 'account_change_password' %}" 
+            class="btn btn-outline btn-primary btn-sm"
+          >
+            Change Password
+          </a>
+          <a 
+            href="{% url 'account_logout' %}" 
+            class="btn btn-primary btn-sm"
+          >
+            Logout
+          </a>
+        </div>
+        <button 
+          class="mt-4 text-error hover:text-error/80 text-sm font-semibold"
+          hx-get="{% url 'profile_delete_confirm' %}" 
+          hx-target="#delete-modal" 
+          hx-swap="innerHTML"
+        >
+          Delete Account
+        </button>
+        <div id="delete-modal" class="mt-4"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add CSRF token and HTMX config -->
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+<script>
+  document.addEventListener('htmx:configRequest', (event) => {
+    event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+  });
+</script>
+{% endblock content %}

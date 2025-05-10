@@ -1,0 +1,82 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}Django SaaS LaunchKit | Save 10+ Hours{% endblock %}</title>
+
+    {% tailwind_css %}
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="{% static 'htmx.min.js' %}"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Heroicons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      feather.replace();
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+      .gradient-text {
+        background: linear-gradient(45deg, #ff6b00, #ffd700);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .glow {
+        box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+      }
+
+      .hover-glow:hover {
+        box-shadow: 0 0 15px rgba(255, 107, 0, 0.6);
+      }
+
+      .navbar-scrolled {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      code, pre {
+        font-family: 'Fira Code', monospace;
+      }
+    </style>
+
+    <!-- Analytics & Scripts -->
+    {% block scripts %}
+
+    {% endblock %}
+  </head>
+
+  <body class="min-h-screen bg-gradient-to-br from-base-100 via-neutral-50 to-base-100 text-base-content flex flex-col">
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-6 bg-base-100 text-base-content border-t border-base-200">
+      <div class="max-w-7xl mx-auto flex flex-col items-center justify-center gap-4 w-full">
+        <!-- Links -->
+        <div class="flex gap-6">
+          <a href="{% url 'terms' %}" class="link link-primary font-medium hover:underline">Terms</a>
+          <a href="{% url 'privacy' %}" class="link link-primary font-medium hover:underline">Privacy</a>
+        </div>
+  
+      </div>
+    </footer>
+  
+  </body>
+</html>

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 px-4 py-24">
+  <div 
+    x-data="{ showModal: true }" 
+    x-on:keydown.window.escape="window.location.href='{% url 'profile' %}'"
+  >
+    <!-- Overlay -->
+    <div 
+      x-cloak 
+      x-show="showModal" 
+      x-transition.opacity 
+      class="fixed inset-0 z-10 bg-gray-900/50"
+    ></div>
+
+    <!-- Modal -->
+    <div 
+      x-cloak 
+      x-show="showModal" 
+      x-transition 
+      class="fixed inset-0 z-50 flex items-center justify-center p-4"
+    >
+      <div class="mx-auto w-full max-w-md bg-gray-800 border border-gray-700 rounded-lg shadow-xl">
+        <div class="relative p-6">
+          <!-- Close Button -->
+          <a 
+            href="{% url 'profile' %}" 
+            x-on:click="showModal = false" 
+            class="absolute top-4 right-4 text-gray-400 hover:text-gray-300"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6">
+              <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+            </svg>
+          </a>
+
+          <!-- Content -->
+          <h3 class="text-lg font-medium text-white">Logout</h3>
+          <p class="mt-2 text-sm text-gray-400">Are you sure you want to logout?</p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex justify-end gap-3 p-6">
+          <a 
+            href="{% url 'profile' %}" 
+            x-on:click="showModal = false" 
+            class="px-4 py-2 text-sm font-semibold text-gray-400 border border-gray-400 hover:bg-gray-700 rounded-lg transition transform hover:scale-105"
+          >
+            Go Back
+          </a>
+          <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            <button 
+              type="submit" 
+              class="px-4 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition transform hover:scale-105"
+            >
+              Logout
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

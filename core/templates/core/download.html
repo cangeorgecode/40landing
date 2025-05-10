@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-base-100 via-neutral-50 to-base-100 text-center px-6 py-12">
+  <div class="max-w-xl mx-auto space-y-8">
+
+    <!-- Hidden anchor tag -->
+    <a id="download-link" href="{{ download_url|safe }}" style="display: none;" download></a>
+
+    <!-- Download Message -->
+    <h1 class="text-4xl font-extrabold">📦 Download Started</h1>
+    <p class="text-lg opacity-80">Your Django SaaS kit is downloading now.</p>
+
+    <!-- PROGRESS BAR + SUCCESS MESSAGE -->
+    <p class="text-sm mt-4 text-success">
+      <i class="fas fa-check-circle mr-2"></i> Download started successfully
+    </p>
+
+    <div class="progress progress-success w-full max-w-md mx-auto mt-2 h-2">
+      <div class="progress-bar bg-success" style="width: 100%"></div>
+    </div>
+
+    <p class="mt-6 text-sm opacity-70">
+      Thanks for buying! Reach out on Twitter if you need help:
+      <a href="https://x.com/joji_jiji" target="_blank" class="link link-primary">@joji_jiji</a>
+    </p>
+
+    <!-- Fallback CTA -->
+    <p class="text-sm mt-2">
+      If the download didn’t start automatically,
+      <a href="{{ download_url|safe }}" target="_blank" class="link link-primary hover:underline">
+        click here to try again.
+      </a>
+    </p>
+
+  </div>
+</div>
+
+<script>
+  window.onload = () => {
+    const downloadLink = document.getElementById("download-link");
+    if (downloadLink && downloadLink.href) {
+      downloadLink.click();  // Triggers download without navigating away
+    }
+  };
+</script>
+{% endblock %}

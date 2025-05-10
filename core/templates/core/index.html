@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Hero -->
+<section class="hero px-4 mx-auto max-w-7xl min-h-screen bg-gradient-to-br from-base-200 to-base-300">
+  <div class="hero-content w-full mx-auto text-left md:w-11/12 xl:w-8/12 md:text-center">
+    <div>
+      <h1 class="mb-3 text-4xl font-bold md:text-5xl md:leading-tight md:font-extrabold">
+        {% block hero_headline %}Your App Name Here{% endblock %}
+      </h1>
+      <p class="mb-6 text-lg md:text-xl md:leading-normal text-base-content/80">
+        {% block hero_subhead %}Solve a problem, save time, or launch fast—your tagline goes here.{% endblock %}
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 p-4">
+        <a href="{% block cta_primary_link %}#{% endblock %}" class="btn btn-primary btn-lg">
+          {% block cta_primary_text %}Get Started{% endblock %}
+        </a>
+        {% block cta_secondary %}
+        <a href="#features" class="btn btn-outline btn-lg btn-primary">
+          Learn More
+        </a>
+        {% endblock %}
+      </div>
+      <div class="flex flex-col justify-start mb-3 space-y-2 text-xs md:flex-row md:justify-center md:space-x-8 md:space-y-0 text-base-content/80">
+        {% block hero_trust %}
+        <div class="flex items-center">
+          <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 mr-1 text-success">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+          </svg>
+          Free to start
+        </div>
+        <div class="flex items-center">
+          <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 mr-1 text-success">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+          </svg>
+          No commitment
+        </div>
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="px-4 py-24 mx-auto max-w-7xl">
+  <h2 class="mb-8 text-3xl font-bold md:text-4xl md:leading-tight md:text-center">
+    {% block features_headline %}Why It’s Great{% endblock %}
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    {% block feature_1 %}
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title text-xl md:text-2xl">Feature 1</h3>
+        <p class="text-base-content/80">Describe how this solves a problem or saves time for your users.</p>
+        <a href="#" class="link link-primary">Learn More</a>
+      </div>
+    </div>
+    {% endblock %}
+    {% block feature_2 %}
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title text-xl md:text-2xl">Feature 2</h3>
+        <p class="text-base-content/80">Highlight another key benefit—keep it short and punchy.</p>
+        <a href="#" class="link link-primary">Learn More</a>
+      </div>
+    </div>
+    {% endblock %}
+    {% block feature_3 %}
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title text-xl md:text-2xl">Feature 3</h3>
+        <p class="text-base-content/80">Add a third feature if needed—customize away!</p>
+        <a href="#" class="link link-primary">Learn More</a>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+</section>
+
+<!-- Proof -->
+<section class="px-4 py-24 mx-auto max-w-7xl">
+  <h2 class="mb-8 text-3xl font-bold md:text-4xl md:leading-tight md:text-center">
+    {% block proof_headline %}Proof It Works{% endblock %}
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% block proof_item_1 %}
+    <div class="card bg-base-100 shadow-md">
+      <div class="card-body">
+        <p class="text-base-content/80 mb-4">"This app saved me hours—perfect for my freelance gig!"</p>
+        <p class="text-primary font-semibold">- A Happy User</p>
+      </div>
+    </div>
+    {% endblock %}
+    {% block proof_item_2 %}
+    <div class="card bg-base-100 shadow-md">
+      <div class="card-body">
+        <p class="text-base-content/80 mb-4">"Launched my MVP in a week—couldn’t have done it without this."</p>
+        <p class="text-primary font-semibold">- Startup Founder</p>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="px-4 py-24 mx-auto max-w-7xl text-center bg-gradient-to-br from-base-300 to-base-200">
+  <h2 class="mb-6 text-3xl font-bold md:text-4xl md:leading-tight">
+    {% block cta_final_headline %}Ready to Try It?{% endblock %}
+  </h2>
+  <p class="mb-6 text-lg text-base-content/80 max-w-2xl mx-auto">
+    {% block cta_final_subhead %}Start building your app today—customize this however you like!{% endblock %}
+  </p>
+  <a href="{% block cta_final_link %}#{% endblock %}" class="btn btn-primary btn-lg">
+    {% block cta_final_text %}Get Started Now{% endblock %}
+  </a>
+</section>
+
+<!-- FAQ -->
+<section class="px-4 py-24 mx-auto max-w-7xl">
+  <h2 class="mb-8 text-3xl font-bold md:text-4xl md:leading-tight">
+    {% block faq_headline %}Frequently Asked Questions{% endblock %}
+  </h2>
+  <div class="join join-vertical w-full">
+    {% block faq_items %}
+    <div class="collapse collapse-arrow join-item border border-base-300">
+      <input type="checkbox" />
+      <div class="collapse-title text-lg font-semibold">
+        What does this app do?
+      </div>
+      <div class="collapse-content text-base-content/80">
+        <p>Add your app’s purpose here—keep it simple and clear.</p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow join-item border border-base-300">
+      <input type="checkbox" />
+      <div class="collapse-title text-lg font-semibold">
+        How do I get started?
+      </div>
+      <div class="collapse-content text-base-content/80">
+        <p>Explain the first step—e.g., sign up, download, or install.</p>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="px-4 py-24 mx-auto max-w-7xl text-center">
+  <h2 class="mb-6 text-3xl font-bold md:text-4xl md:leading-tight">
+    {% block contact_headline %}Get in Touch{% endblock %}
+  </h2>
+  <p class="mb-6 text-lg text-base-content/80">
+    {% block contact_text %}Questions? Reach out—I’m here to help.{% endblock %}
+  </p>
+  <a href="{% block contact_link %}mailto:your@email.com{% endblock %}" class="link link-primary font-semibold">
+    {% block contact_label %}Contact Me{% endblock %}
+  </a>
+</section>
+
+{% endblock content %}

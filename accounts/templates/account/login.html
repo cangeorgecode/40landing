@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load socialaccount %}
+
+{% block content %}
+<section class="hero px-4 py-24 mx-auto max-w-7xl min-h-screen bg-gradient-to-br from-base-200 to-base-300">
+  <div class="hero-content w-full py-6 mx-auto md:w-3/5 lg:w-2/5">
+    <div class="w-full text-center">
+      <h1 class="mb-6 text-3xl font-bold md:text-4xl md:leading-tight">
+        Login
+      </h1>
+
+      <!-- Email/Password Form -->
+      <form class="mt-8 space-y-6" action="{% url 'account_login' %}" method="post" autocomplete="off">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+          <div class="text-error text-sm">{{ form.non_field_errors }}</div>
+        {% endif %}
+        
+        <label class="form-control w-full">
+          <div class="label">
+            <span class="label-text text-base-content/80">Email</span>
+          </div>
+          <input 
+            class="input input-bordered w-full bg-base-100 text-base-content focus:ring-2 focus:ring-primary focus:border-primary transition-all" 
+            type="text" 
+            id="username" 
+            name="login" 
+            placeholder="Your email" 
+            required 
+          />
+          {% if form.login.errors %}
+            <div class="text-error text-sm mt-1">{{ form.login.errors }}</div>
+          {% endif %}
+        </label>
+
+        <label class="form-control w-full">
+          <div class="label">
+            <span class="label-text text-base-content/80">Password</span>
+          </div>
+          <input 
+            class="input input-bordered w-full bg-base-100 text-base-content focus:ring-2 focus:ring-primary focus:border-primary transition-all" 
+            type="password" 
+            id="password" 
+            name="password" 
+            placeholder="••••••••" 
+            required 
+          />
+          {% if form.password.errors %}
+            <div class="text-error text-sm mt-1">{{ form.password.errors }}</div>
+          {% endif %}
+        </label>
+        
+        <button 
+          type="submit" 
+          class="btn btn-primary w-full hover:btn-primary/90 transition-colors duration-200"
+        >
+          Login
+        </button>
+      </form>
+
+      <!-- Divider with "OR" -->
+      <div class="relative my-8">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-base-content/20"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-4 bg-base-200 text-base-content/60 rounded-full">OR</span>
+        </div>
+      </div>
+
+      <!-- Google Login Button -->
+      <div class="mt-4">
+        <a 
+          href="{% provider_login_url 'google' %}" 
+          class="btn btn-outline w-full flex items-center justify-center gap-3 hover:bg-gray-100 hover:text-base-content transition-all duration-200 border-base-content/30"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-1.02.68-2.31 1.08-3.71 1.08-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C4.01 20.48 7.72 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.72 1 4.01 3.52 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Continue with Google
+        </a>
+      </div>
+
+      <!-- Terms and Privacy -->
+      <p class="mt-6 text-sm text-center text-base-content/60">
+        By clicking "Login" or "Continue with Google" you agree to our
+        <a href="#" class="link link-primary">Terms of Service</a>
+        and
+        <a href="#" class="link link-primary">Privacy Policy</a>.
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock content %}

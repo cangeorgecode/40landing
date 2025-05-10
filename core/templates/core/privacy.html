@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Privacy Policy{% endblock %}
+{% block content %}
+<div class="max-w-4xl mx-auto px-6 py-12">
+  <h1 class="text-4xl font-bold mb-8">Privacy Policy</h1>
+
+  <p class="mb-6"><strong>Last Updated:</strong> April 5, 2025</p>
+
+  <section class="prose max-w-none">
+
+    <h2>1. Introduction</h2>
+    <p>We respect your privacy and are committed to protecting your personal information.</p>
+
+    <h2>2. What Data We Collect</h2>
+    <ul>
+      <li>Email address (for checkout and support)</li>
+      <li>Payment data (processed via Stripe – we do not store it)</li>
+      <li>Basic usage data (via Posthog – fully anonymized unless opted in)</li>
+    </ul>
+
+    <h2>3. How We Use Your Data</h2>
+    <ul>
+      <li>To process your purchase and deliver your product</li>
+      <li>To respond to support requests</li>
+      <li>To improve our service and user experience</li>
+    </ul>
+
+    <h2>4. Data Retention</h2>
+    <p>We retain customer email addresses and payment records only as long as necessary for legal compliance and support purposes.</p>
+
+    <h2>5. Cookies & Tracking</h2>
+    <p>We use minimal cookies for analytics and session management. No third-party ads or trackers are used.</p>
+
+    <h2>6. Children’s Privacy</h2>
+    <p>Our site is not directed to anyone under the age of 18. We do not knowingly collect personal information from minors.</p>
+
+    <h2>7. European Union Users</h2>
+    <p>We comply with GDPR and give users full rights to access, correct, or delete their data upon request.</p>
+
+    <h2>8. Contact Us</h2>
+    <p>If you have any questions or concerns, please reach out to us at <a href="mailto:privacy@yourwebsite.com" class="link link-primary">privacy@yourwebsite.com</a></p>
+  </section>
+</div>
+{% endblock %}

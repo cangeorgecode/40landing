@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load allauth %}
+
+{% block head_title %}
+    {% trans "Email Address" %}
+{% endblock head_title %}
+
+{% block content %}
+<!-- Email Change Section -->
+<section class="hero px-4 py-24 mx-auto max-w-7xl min-h-screen bg-gradient-to-br from-base-200 to-base-300">
+  <div class="hero-content w-full mx-auto text-left md:w-11/12 xl:w-8/12">
+    <div class="w-full">
+      <h1 class="mb-6 text-3xl font-bold md:text-4xl md:leading-tight">
+        {% trans "Email Address" %}
+      </h1>
+
+      {% if not emailaddresses %}
+        <!-- Warn No Email -->
+        <div class="mb-6 p-4 bg-base-100 rounded-lg">
+          <p class="text-base-content/80">{% trans "You have not added any email addresses yet." %}</p>
+        </div>
+      {% endif %}
+
+      {% url 'account_email' as action_url %}
+      <form method="post" action="{{ action_url }}" class="space-y-6">
+        {% csrf_token %}
+
+        <!-- Current Email -->
+        {% if current_emailaddress %}
+          <div>
+            <label class="label">
+              <span class="label-text font-semibold">{% translate "Current email" %}:</span>
+            </label>
+            <input
+              id="current_email"
+              type="email"
+              value="{{ current_emailaddress.email }}"
+              disabled
+              class="input input-bordered w-full bg-base-100 text-base-content/80"
+            >
+          </div>
+        {% endif %}
+
+        <!-- New Email (Pending Verification) -->
+        {% if new_emailaddress %}
+          <div>
+            <label class="label">
+              <span class="label-text font-semibold">
+                {% if not current_emailaddress %}
+                  {% translate "Current email" %}:
+                {% else %}
+                  {% translate "Changing to" %}:
+                {% endif %}
+              </span>
+            </label>
+            <input
+              id="new_email"
+              type="email"
+              value="{{ new_emailaddress.email }}"
+              disabled
+              class="input input-bordered w-full bg-base-100 text-base-content/80"
+            >
+            <p class="mt-2 text-sm text-base-content/80">
+              {% blocktranslate %}Your email address is still pending verification.{% endblocktranslate %}
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 mt-4">
+              <button
+                form="pending-email"
+                type="submit"
+                name="action_send"
+                class="btn btn-outline btn-primary btn-lg"
+              >
+                {% trans "Re-send Verification" %}
+              </button>
+              {% if current_emailaddress %}
+                <button
+                  form="pending-email"
+                  type="submit"
+                  name="action_remove"
+                  class="btn btn-outline btn-error btn-lg"
+                >
+                  {% trans "Cancel Change" %}
+                </button>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- Change Email Input -->
+        <div>
+          <label class="label">
+            <span class="label-text font-semibold">{% translate "Change to" %}:</span>
+          </label>
+          <input
+            id="{{ form.email.auto_id }}"
+            name="email"
+            type="email"
+            value="{{ form.email.value|default:'' }}"
+            class="input input-bordered w-full bg-base-100 text-base-content {% if form.email.errors %}border-error{% endif %}"
+          >
+          {% if form.email.errors %}
+            <p class="mt-2 text-sm text-error">{{ form.email.errors|join:", " }}</p>
+          {% endif %}
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+          <button
+            name="action_add"
+            type="submit"
+            class="btn btn-primary btn-lg"
+          >
+            {% trans "Change Email" %}
+          </button>
+        </div>
+      </form>
+
+      <div class="mt-6">
+        <a href="{% url 'profile' %}" class="btn btn-primary btn-lg">
+          Go Back
+        </a>
+      </div>
+
+      <!-- Hidden Form for Pending Email Actions -->
+      {% if new_emailaddress %}
+        <form
+          id="pending-email"
+          method="post"
+          action="{% url 'account_email' %}"
+          class="hidden"
+        >
+          {% csrf_token %}
+          <input type="hidden" name="email" value="{{ new_emailaddress.email }}">
+        </form>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock content %}
