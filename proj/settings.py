@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-)8xbb+w(8n&=bef0_15b!jn#asg)ws*2v3dhrx@1_wfb%j2c&l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'landing1.com', 'landing2.com', 'landing3.com', 'landing4.com', 'landing5.com', 'landing6.com', 'landing7.com', 'landing8.com', 'landing9.com', 'landing10.com', 'landing11.com', 'landing12.com', 'landing13.com', 'landing14.com', 'landing15.com', 'landing16.com', 'landing17.com', 'landing18.com', 'landing19.com', 'landing20.com', 'landing21.com', 'landing22.com', 'landing23.com', 'landing24.com', 'landing25.com', 'landing26.com', 'landing27.com', 'landing28.com', 'landing29.com', 'landing30.com', 'landing31.com', 'landing32.com', 'landing33.com', 'landing34.com', 'landing35.com', 'landing36.com', 'landing37.com', 'landing38.com', 'landing39.com', 'landing40.com', 'buildwebsite.io', 'buildwebsite.dev']
+ALLOWED_HOSTS = ['localhost', 'landing1.com', 'downloadandlaunch.com', 'lowcodebuildwebsite.com', 'easysmbwebsite.com', 'webforfounders.com', 'businesswebtemplate.com', 'webtemplatehub.com', 'clicklaunchweb.com', 'webforlocalshops.com', 'easyweb4owners.com', 'web4small.business', 'webbuildercomp.com', 'buildwithtemplate.com', 'deployfast.dev', 'founderswebkit.com', 'templates4biz.com', 'web4shopowners.com', 'buildwebsitefast.dev', 'buildwebsitefast.app', 'smbsitebuilder.com', 'smbsitebuilder.pro', 'smbsitebuilder.dev', 'deploymywebfast.dev', 'deploymywebfast.com', 'deploymywebfast.app', 'deploymywebfast.pro', 'site4mysmallbusiness.com', 'site4mysmall.business', 'diywebsite4.business', 'professionalwebsite4.business', 'webtemplate4.sale', 'webtemplate4.business', 'weblaunchkit.dev', 'weblaunchkit.app', 'weblaunchkit4.business', 'websitetemplate4.biz', 'localbizweb.site', 'buildfast.website', 'biztemplate4.website', 'buildwebsite.io', 'buildwebsite.dev']
 
 SECURE_SSL_REDIRECT = False
 SECURE_HSTS_SECONDS = 0
@@ -61,19 +61,6 @@ INSTALLED_APPS = [
     "django_htmx",
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
-    'wagtail.embeds',
-    'wagtail.sites',
-    'wagtail.users',
-    'wagtail.snippets',
-    'wagtail.documents',
-    'wagtail.images',
-    'wagtail.search',
-    'wagtail.admin',
-    'wagtail',
-    'modelcluster',
-    'taggit',
     'corsheaders',
     'django_filters',
     'csvimport.app.CSVImportConf',
@@ -101,14 +88,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "allauth.account.middleware.AccountMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
-
-# Wagtail configs
-DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
-WAGTAIL_SITE_NAME = 'Django Boilerplate'
-WAGTAILADMIN_BASE_URL = BASE_URL
-WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 
 
 LOGIN_REDIRECT_URL = '/'
