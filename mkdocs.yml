@@ -1,0 +1,31 @@
+site_name: Django Landing Page Engine
+theme: material
+docs_dir: docs
+site_url: https://yourmaindomain.com/docs 
+repo_url: https://github.com/yourusername/django-landing-engine 
+repo_name: GitHub
+edit_uri: edit/master/docs/
+
+nav:
+  - Home: index.md
+  - Models: models.md
+  - Views: views.md
+  - Templates: templates.md
+  - Stripe Integration: stripe.md
+  - Posthog Tracking: posthog.md
+  - Deployment: deployment.md
+  - FAQ: faq.md
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://x.com/joji_jiji 
+      name: Twitter
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername 
+      name: GitHub
+
+copyright: "© 2025 George - Built with MkDocs"

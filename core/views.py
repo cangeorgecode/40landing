@@ -148,3 +148,13 @@ def terms(request):
 
 def privacy(request):
     return render(request, 'core/privacy.html')
+
+def robots_txt(request):
+    current_domain = request.get_host().split(':')[0].lower()
+    content = render_to_string("robots.txt", {"domain": current_domain})
+    return HttpResponse(content, content_type="text/plain")
+
+def sitemap_xml(request):
+    pages = Page.objects.all().order_by('-updated_at')
+    xml = render(request, 'sitemap.xml', {'pages': pages}, content_type='application/xml')
+    return xml

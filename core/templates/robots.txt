@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://{{ domain }}/sitemap.xml
+
+# Don't index sensitive paths
+Disallow: /admin/
+Disallow: /accounts/
+Disallow: /checkout/
+Disallow: /download/
+Disallow: /webhook/

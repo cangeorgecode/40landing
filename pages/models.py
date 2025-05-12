@@ -27,6 +27,9 @@ class Page(models.Model):
         Easy Customization – Under 20 Minutes""")
     pricing_bonuses = models.TextField(blank=True, help_text="Bonus items (line break separated)")
 
+    def get_canonical_url(self):
+        return f"https://{self.domain.name}/"
+
     def __str__(self):
         return self.title
 

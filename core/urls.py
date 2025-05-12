@@ -10,4 +10,6 @@ urlpatterns = [
     path('download/', views.download_page, name='download_page'),
     path('terms/', views.terms, name='terms'),
     path('privacy/', views.privacy, name='privacy'),
+    path("robots.txt", views.robots_txt),
+    path('sitemap.xml', views.sitemap_xml, name='sitemap_xml')
 ]

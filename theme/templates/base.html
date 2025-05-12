@@ -53,6 +53,21 @@
       }
     </style>
 
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org ",
+        "@type": "WebSite",
+        "name": "{{ page.title }}",
+        "description": "{{ page.meta_description }}",
+        "url": "https://{{ request.get_host }}/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://{{ request.get_host }}/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
     <!-- Analytics & Scripts -->
     {% block scripts %}
 
